@@ -1,0 +1,6 @@
+s61988:x:1219:504:Stoian Genchev,SI,2,5:/home/SI/s61988:/bin/bash
+s81430:x:1234:503:Iordan Petkov, KN, k2, g7:/home/KN/s81430:/bin/bash
+s61807:x:1248:504:Elica Venchova:/home/SI/s61807:/bin/bash
+s62009:x:1254:504:Denitsa Dobreva, 2, 6:/home/SI/s62009:/bin/bash
+s61756:x:1258:504:Katrin Kartuleva, SI, 4, 1:/home/SI/s61756:/bin/bash
+s855287:x:1195:504:Vaska Kichukova,SI,2,5:/home/SI/s855287:/bin/bash

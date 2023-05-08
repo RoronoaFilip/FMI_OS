@@ -1,0 +1,10 @@
+/home/students/s0600041/.profile
+/home/students/s0600041/.kshrc
+/home/students/s0600041/.bash_logout
+/home/students/s0600041/canBeVisited.sh
+/home/students/s0600041/.dircolors
+/home/students/s0600041/.bash_history
+/home/students/s0600041/.bashrc
+/home/students/s0600041/whoIsOnline.sh
+/home/students/s0600041/.lesshst
+/home/students/s0600041/.viminfo

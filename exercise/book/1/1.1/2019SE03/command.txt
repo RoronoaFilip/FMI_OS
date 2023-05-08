@@ -1,0 +1,1 @@
+find /home/velin/ -inum "$(stat "$(find /home/velin/ -printf '%TF %TT %p\n' 2> /dev/null | egrep '/home/velin/\..*$' -v | sort -r -t ' ' -k 1,2 | head -n 1 | cut -d ' ' -f 3)" --printf '%i\n')"

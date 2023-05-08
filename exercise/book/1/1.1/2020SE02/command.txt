@@ -1,0 +1,1 @@
+egrep "$(cat spacex.txt |tail -n +2 | grep 'Failure' | cut -d '|' -f 2 | sort | uniq -c | sort -n -r | tr -s ' ' | cut -d ' ' -f 3 | head -n 1)" spacex.txt | sort -t '|' -k 1 | sed 's/\(.*\)|\(.*\)|\(.*\)|\(.*\)/\3:\4/g' > answer.txt

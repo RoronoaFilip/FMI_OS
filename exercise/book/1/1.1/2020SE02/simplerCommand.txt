@@ -1,0 +1,1 @@
+cat spacex.txt | egrep "$(cat spacex.txt | tail -n +2| egrep 'Failure' | cut -d '|' -f 2 | sort | uniq -c | sed -E 's/^\s+//g' | sort -nrt ' ' -k 1 | cut -d ' ' -f 2 | head -n 1)" | sort -rnt '|' -k 1 | head -n 1 | cut -d '|' -f 3,4 | sed 's/|/:/g'

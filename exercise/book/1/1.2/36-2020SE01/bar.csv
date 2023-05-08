@@ -1,0 +1,4 @@
+hostname,phy,vlans,hosts,failover,VPN-3DES-AES,peers,VLAN Trunk Ports,license,SN,key
+border-lozenets,4,16,Unlimited,Active/Active,Disabled,16,4,PIX 535,PIX5350007,0xd11b3d48
+filip,69,420,bezkrai,f/f,Cringe,14,05,FIF 1234567898,GUTS123,fsdouhfuifhwe
+loz-gw,8,20,Unlimited,Active/Standby,Enabled2,25,8,ASA 5505,JMX00000000,0e268e0c

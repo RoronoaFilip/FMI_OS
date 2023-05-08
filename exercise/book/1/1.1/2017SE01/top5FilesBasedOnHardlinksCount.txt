@@ -1,0 +1,5 @@
+/usr/bin/bzip2
+/usr/bin/bzcat
+/usr/bin/bunzip2
+/usr/lib/postfix/sbin/smtp
+/usr/lib/postfix/sbin/qmgr

@@ -1,0 +1,13 @@
+2017-SE-01 Намерете имената на топ 5 файловете в текущата директория с най-много hardlinks.
+
+find / -type f -links +1 -printf '%n %p\n' 2> errors.txt | sort | uniq| sort -n -r | head -n 5 > top5FilesBasedOnHardlinksCount.txt
+
+-prints hardlinks count and file name
+
+or 
+
+find / -type f -links +1 -printf '%n %p\n' 2> errors.txt | sort | uniq| sort -n -r | head -n 5 | cut -d ' ' -f 2 > top5FilesBasedOnHardlinksCount.txt
+
+-prints only file name
+
+find / -type f -printf '%n %p\n' 2> errors.txt | sort | uniq| sort -t ' ' -k 1 -n -r | head -n 5 | cut -d ' ' -f 2 > top5FilesBasedOnHardlinksCount.txt

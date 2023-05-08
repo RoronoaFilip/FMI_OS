@@ -1,0 +1,8 @@
+2018-SE-02: Напишете серия от команди, извеждащи на екрана само inode-а на най-скоро променения (по съдържание) файл, намиращ се в home директорията на потребител pesho (или нейните
+под-директории), който има повече от едно име.
+
+find ~ -type f -links +1 -printf '%TF_%TT %n %i\n' | sort -n -r -t ' ' -k 1 | uniq | cut -d ' ' -f 2,3 | sort -n -r -t ' ' -k 1 | head -n 1 |  cut -d ' ' -f 2 > mostRecentModifiedFileInodeThatHasMoreThanOneName.txt
+
+- %i prints the inode
+- -links +1 finds only the files that have 2 or more names
+- the other thinks are cutting and sorting based on the count of hardlinks and modify time

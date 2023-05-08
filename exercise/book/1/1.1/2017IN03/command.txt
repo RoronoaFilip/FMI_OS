@@ -1,0 +1,3 @@
+cat /etc/passwd | cut -d ':' -f 1 | sed 's/s//g' |awk -F '' '{print $1""$2}' | sort -n | uniq -c | tr -s ' ' | cut -d ' ' -f 2,3 | sort -n | awk -F ' ' '$2 ~ /[1-91-9]/ {print $0}' > first2DigitsOfFN.txt
+
+cat /etc/passwd | cut -d ':' -f 1 | sed 's/s//g' |awk -F '' '{print $1""$2}' | sort -n | uniq -c | tr -s ' ' | cut -d ' ' -f 2,3 | sort -n | awk -F ' ' '$2 ~ /[1-91-9]/ {print $0}' | tail -n 1

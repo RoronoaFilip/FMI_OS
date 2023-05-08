@@ -1,0 +1,2 @@
+egrep "$(find /home/students/ -maxdepth 1 -type
+ d -cmin -135)" /etc/passwd | cut -d ':' -f 1,5 | cut -d ',' -f 1 | sed -E -e 's/^s//g' -e 's/:/\t/g'

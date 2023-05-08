@@ -1,0 +1,1 @@
+grep "$(find /home/students/ -type d -cmin -135 -exec stat {} --printf '%u\n' \; 2> /dev/null | sort | uniq)" /etc/passwd | sed 's/\(.*\):\(.*\):\(.*\):\(.*\):\(.*\):\(.*\):\(.*\)/\1 \5/g'| cut -d ',' -f 1

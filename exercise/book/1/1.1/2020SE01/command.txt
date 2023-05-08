@@ -1,0 +1,1 @@
+find ~ -mindepth 1 -maxdepth 1 -type f -printf '%U %p\n' | egrep "$(id -u)" | cut -d ' ' -f 2 | xargs -I {} chmod 664 {}

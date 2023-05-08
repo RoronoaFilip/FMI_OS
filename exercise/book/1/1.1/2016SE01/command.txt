@@ -1,0 +1,3 @@
+cat philip-j-fry.txt | egrep '[02468]' | egrep '[a-w]' -v | wc -l
+
+cat philip-j-fry.txt | egrep '[02468]' | egrep '[a-w]' -v -c

@@ -1,0 +1,12 @@
+# route description
+
+
+#                 from        =        Sofia # edited at Sat Apr 22 05:06:41 PM EEST 2023 by s0600041
+from = blagoevgrad # added at Sat Apr 22 05:06:41 PM EEST 2023 by s0600041
+
+
+# 		to		 =		 Varna # my favourite city! # edited at Sat Apr 22 05:04:08 PM EEST 2023 by s0600041
+to = Plovdiv # added at Sat Apr 22 05:04:08 PM EEST 2023 by s0600041
+
+
+type = t2_1

@@ -1,0 +1,8 @@
+2018-SE-01: Променете правата на всички директории, намиращи се някъде във вашата home
+директория, така че да станат такива, каквито биха се получили, ако ги бяхте създали с маска
+0022.
+
+find ~ -type d -exec chmod 755 {} \;
+- Folders need the execute permission, otherwise you can't go in them
+- if the mask is 0022 that means the permissions are 0777 - 0022 = 0755
+
