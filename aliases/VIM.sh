@@ -16,7 +16,8 @@ if [[ $1 =~ \.sh$ ]]; then
 elif [[ $1 =~ \.c$ ]]; then
 	file="$1"
 
-	echo "#include <stdio.h>" >> "$file"
+	#echo -e "#include <unistd.h>
+	##include <stdlib.h>" >> "$file"
 	echo "" >> "$file"
 	echo "int main() {" >> "$file"
 	echo "" >> "$file"
