@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 		err(2, "Cannot open file 1");
 	}
 	
-	int fd2 = open(argv[2], O_TRUNC | O_WRONLY);
+	int fd2 = open(argv[2], O_CREAT | O_TRUNC | O_WRONLY, S_IWUSR + S_IRUSR);
 	if (fd2 == -1) {
 		err(2, "Cannot open file 2");
 	}
