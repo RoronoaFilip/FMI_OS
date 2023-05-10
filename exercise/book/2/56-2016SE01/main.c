@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
 	int bytesRead = 0;
 	uint8_t c = 0;
 	while((bytesRead = read(fd1, &c, sizeof(c))) > 0) {
-		arr[c]++;	
+		arr[c] += 1;	
 	}
 
 	if(bytesRead != 0) 
@@ -30,9 +30,9 @@ int main(int argc, char** argv) {
 	if(lseekCheck == -1)
 		errx(2, "Error returning lseek to begin of file %s", argv[1]);
 
-	for(uint8_t i = 0; i < 256; ++i) {
+	for(uint16_t i = 0; i < 256; ++i) {
 		uint8_t buf = i;
-		while(arr[i]--) {
+		for(uint32_t j = 0; j < arr[i]; ++j) {
 			if((write(fd1, &buf, sizeof(buf))) == -1)
 				err(4, "Error while sorting array");
 		}
