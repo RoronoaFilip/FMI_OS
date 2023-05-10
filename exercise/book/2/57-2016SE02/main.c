@@ -14,7 +14,8 @@ int main(int argc, char** argv) {
 		errx(1, "ERROR: params count");
 
 	struct stat s;
-	int errorCode = stat(argv[1], &s);
+	if(stat(argv[1], &s) == -1)
+		errx(1, "ERROR: extracting size of file 1: %s", argv[1]);
 
 	if (s.st_size % 8 != 0)
 		errx(1, "ERROR: size of file 1: %s, is not devisible by 8", argv[1]);
