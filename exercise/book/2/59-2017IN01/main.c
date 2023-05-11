@@ -13,7 +13,8 @@ int main(int argc, char** argv) {
 	if (argc != 5)
 		errx(2, "ERROR: params count");
 
-
+	int fd1;
+	if((fd1 = open()))
 
 	exit(0);
 }
