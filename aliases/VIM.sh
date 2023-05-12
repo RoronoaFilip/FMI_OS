@@ -25,7 +25,7 @@ elif [[ $1 =~ \.c$ ]]; then
 	echo "}" >> "$file"
 fi
 
-if [[ ! -z $file ]]; then
+if [[ ! -z $file && ! $file =~ \.c$ ]]; then
 	touch "$file"
 	chmod u+x "$file"
 else
