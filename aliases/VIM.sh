@@ -21,6 +21,9 @@ elif [[ $1 =~ \.c$ ]]; then
 	echo "" >> "$file"
 	echo "int main() {" >> "$file"
 	echo "" >> "$file"
+	echo "" >> "$file"
+	echo "" >> "$file"
+	echo "	close();" >> "$file"
 	echo "	return 0;" >> "$file"
 	echo "}" >> "$file"
 fi
