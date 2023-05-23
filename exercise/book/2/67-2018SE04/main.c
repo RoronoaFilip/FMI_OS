@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
 	if(numsCount > 65535)
 		errx(3, "ERROR: file: %s has more than 65535 numbers", argv[1]);
 
-	uint16_t *arr = (uint16_t*) malloc(numsCount);
+	uint16_t *arr = (uint16_t*) malloc(fileSize);
 
 	int fd1;
 	if((fd1 = open(argv[1], O_RDONLY)) == -1)
