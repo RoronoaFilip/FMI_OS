@@ -1,8 +1,8 @@
 #include <unistd.h>
-#include <stdio.h>
 #include <err.h>
 #include <sys/wait.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char** argv) {
 	int pf[2];
@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
 	if(pipe(pf3) == -1)
 		errx(1, "ERROR: calling pipe() for pf3");
 
-	if((pid = fork())) {
+	if((pid = fork()) == 0) {
 		close(pf3[0]);
 
 		dup2(pf2[0], 0);
@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
 		execlp("sort", "sort", (char*)NULL);
 
 		err(4, "ERROR: running sort1");
-		return 4;
+		exit(4);
 	}
 
 	close(pf2[0]);
@@ -84,7 +84,7 @@ int main(int argc, char** argv) {
 		execlp("uniq", "uniq", "-c", (char*)NULL);
 
 		err(5, "ERROR: running uniq -c");
-		return 5;
+		exit(5);
 	}
 
 	close(pf3[0]);
@@ -94,7 +94,7 @@ int main(int argc, char** argv) {
 		dup2(pf4[0], 0);
 		close(pf4[0]);
 
-		execlp("sort", "sort", (char*)NULL);
+		execlp("sort", "sort", "-n", (char*)NULL);
 
 		err(6, "ERROR: running sort2");
 		return 6;
