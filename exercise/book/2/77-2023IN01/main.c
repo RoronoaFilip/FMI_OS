@@ -82,7 +82,7 @@ int main(int argc, char** argv) {
 	if((fd1 = open(argv[1], O_RDONLY)) == -1)
 		err(2, "ERROR: opening file for read: %s", argv[1]);
 	int fd2;
-	if((fd2 = open(argv[2], O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR)) == -1)
+	if((fd2 = open(argv[2], O_RDWR | O_CREAT, S_IRUSR | S_IWUSR)) == -1)
 		err(3, "ERROR: opening file for write: %s", argv[2]);
 
 	struct stat s;
