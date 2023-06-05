@@ -69,7 +69,7 @@ uint32_t findCheksumOfFile(int fd) {
 
 void resetLseek(int fd) {
 	if(lseek(fd, 0, SEEK_SET) == -1)
-		err(11, "ERROR: lseek to 0 int file 2: %d", fd);
+		err(11, "ERROR: lseek to 0 in file 2: %d", fd);
 }
 
 int main(int argc, char** argv) {
