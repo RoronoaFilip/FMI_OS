@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <stdint.h>
+#include <stdio.h>
 #define uint128_t __uint128_t
 
 struct Header {
