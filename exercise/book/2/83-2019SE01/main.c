@@ -31,8 +31,6 @@ int main(int argc, char** argv) {
 		pid_t pid = fork();
 		if(pid == -1)
 			err(3, "ERROR: running fork()");
-		
-		
 
 		if(pid == 0) {
 			if(execvp(Q, args) == -1)

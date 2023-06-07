@@ -14,7 +14,6 @@ uint16_t setBit(uint16_t x, int index, bool bit) {
 	} else {
 		return (~(1 << index)) & x;
 	}
-		
 }
 bool getBit(uint16_t byte, int index) {
 	return ((1 << index & byte) != 0);
