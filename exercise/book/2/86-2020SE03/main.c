@@ -73,7 +73,9 @@ int main(int argc, char** argv) {
 	if(bytes < 0)
 		err(9, "ERROR: reading from pipe in parent");
 
-	printf("%dB\n", buf);
+	while(wait(NULL)) {}
+
+	printf("%dB\n", result);
 
 	close(pd[0]);
 	close(fd);
