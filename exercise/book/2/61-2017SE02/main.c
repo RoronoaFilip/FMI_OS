@@ -7,6 +7,28 @@
 #include <stdio.h>
 #include <fcntl.h>
 
+void myRead(int fd, bool numbers, int* line);
+void myRead(int fd, bool numbers, int* line) {
+	bool toPrint = true;
+	char buf;
+	int readBytes;
+	while((readBytes = read(fd, &buf, sizeof(buf)) > 0)) {
+		if(numbers && toPrint) {
+			printf("%d ", *line);
+			(*line)++;
+			toPrint = false;
+		}
+
+		if(write(1, &buf, sizeof(buf)) == -1)
+			err(1, "ERROR: writing to stdout");
+
+		if(numbers && buf == '\n')
+			toPrint = true;
+	}
+	if(readBytes != 0)
+		err(1, "ERROR: reading from stdin");
+}
+
 int main(int argc, char ** argv) {
 	setbuf(stdout, NULL);
 
@@ -21,52 +43,21 @@ int main(int argc, char ** argv) {
 		numbers = true;
 	}
 	
-	bool toPrint = numbers;
-	int i = 1;
-	int el = 1 + numbers;
-	int readBytes;
-	char buf;
+
+	int line = 1;
 
 	if (isStdin) {
-		while((readBytes = read(0, &buf, sizeof(buf)) > 0)) {
-			if(numbers && toPrint) {
-				printf("%d ", i);
-				i++;
-				toPrint = false;
-			}
-
-			if(write(1, &buf, sizeof(buf)) == -1)
-				err(1, "ERROR: writing to stdout");
-
-			if(numbers && buf == '\n')
-				toPrint = true;
-		}
-		if(readBytes != 0)
-			err(1, "ERROR: reading from stdin");
+		myRead(0, numbers, &line);
 	} else {
-		for(el; el < argc; ++el) {
+		for(int i = 1 + numbers; i < argc; ++i) {
 			int fd;
-			if(strcmp("-", argv[el]) == 0)
+			if(strcmp("-", argv[i]) == 0)
 				fd = 0;
 			else 
-				if((fd = open(argv[el], O_RDONLY)) == -1)
-					err(2, "ERROR: opening file for read: %s", argv[el]);
+				if((fd = open(argv[i], O_RDONLY)) == -1)
+					err(2, "ERROR: opening file for read: %s", argv[i]);
 			
-			while((readBytes = read(fd, &buf, sizeof(buf)) > 0)) {
-				if(numbers && toPrint) {
-					printf("%d ", i);
-					i++;
-					toPrint = false;
-				}
-
-				if(write(1, &buf, sizeof(buf)) == -1)
-					err(2, "ERROR: writing to stdout");
-
-				if(numbers && buf == '\n')
-					toPrint = true;
-			}
-			if(readBytes != 0)
-				err(2, "ERROR: reading from stdin");
+			myRead(fd, numbers, &line);
 
 			close(fd);
 		}	
