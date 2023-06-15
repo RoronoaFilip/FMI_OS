@@ -34,7 +34,8 @@ int main(int argc, char** argv) {
 
 	while((bytes = read(0, &buf, sizeof(buf))) > 0) {
 		if(S) {
-			if(prev == '\0' || (charIndex(buf, argv[2]) != -1 && buf != prev)){
+			int index = charIndex(buf, argv[2]);
+			if(prev == '\0' || index == -1 || (index != -1 && buf != prev)){
 				if(write(1, &buf, sizeof(buf)) == -1)
 					err(3, "ERROR: writing to stdout with -s");
 			}
@@ -56,9 +57,6 @@ int main(int argc, char** argv) {
 	}
 	if(bytes != 0)
 		err(2, "ERROR: reading from stdin");
-
-	if(S)
-		printf("\n");
 
 	return 0;
 }
