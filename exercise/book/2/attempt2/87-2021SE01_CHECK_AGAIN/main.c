@@ -134,7 +134,7 @@ int main(int argc, char** argv) {
 		err(14, "ERROR: runninc localtime in main()");
 
 	char buf[30];
-	size_t size = strftime(buf, 30, "%F %T ",  tm);
+	size_t size = strftime(buf, 30, "%F %T.",  tm);
 	
 	if(size <= 0)
 		err(28, "ERROR: formating year / time for appending");
@@ -151,6 +151,7 @@ int main(int argc, char** argv) {
 	int logFd = createLogFile();
 	int bytes = 0;
 	bytes = appendToFile(logFd, buf, 16, "ERROR: appending date time to log");
+	bytes = write(logFd, &tv.tv_usec, sizeof(tv.tv_usec));
 	bytes = appendToFile(logFd, " \0", 18, "ERROR: appending space to log");
 	bytes = appendToFile(logFd, pwd->pw_name, 17, "ERROR: appending username to log");
 	bytes = appendToFile(logFd, " \0", 19, "ERROR: appending space to log");
