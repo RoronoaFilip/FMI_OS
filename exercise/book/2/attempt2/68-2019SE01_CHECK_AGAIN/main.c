@@ -30,7 +30,7 @@ int openFile(const char* file) {
 		err(3, "ERROR: running stat on file: %s", file);
 
 	if(st.st_size % sizeof(d) != 0)
-		err(4, "ERROR: invalid data structure in file: %s", file);
+		errx(4, "ERROR: invalid data structure in file: %s", file);
 
 	size = st.st_size / sizeof(d);
 
