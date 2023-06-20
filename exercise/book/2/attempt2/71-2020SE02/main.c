@@ -75,20 +75,19 @@ int main(int argc, char** argv) {
 	int fd2 = openFile(sdl, 1);
 	int fd3 = createFile(newFile);
 
-	uint16_t position = 0;
-	while(myRead(fd2, &position, 2) > 0) {
-		int pos = position / 8;
-		int index = 8 - (position % 8) - 1;
+	uint8_t byte = 0;
+	int position = 0;
+	uint16_t buf = 0;
+	while(myRead(fd1, (uint16_t*)&byte, 1) > 0) {
+		for(int i = 7; i >= 0; --i, ++position) {
+			bool bit = getBit(byte, i);
 
-		myLseek(fd1, pos);
-
-		uint8_t byte;
-		myRead(fd1, (uint16_t*)&byte, 1);
-
-		bool bit = getBit(byte, index);
-
-		if(bit)
-			myWrite(fd3, &position);
+			if(bit) {
+				myLseek(fd2, position*2);
+				myRead(fd2, &buf, 2);
+				myWrite(fd3, &buf);
+			}
+		}
 	}
 
 	close(fd1);
