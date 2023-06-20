@@ -20,7 +20,6 @@ int main(int argc, char** argv) {
 		if((fd = open("temp", O_RDONLY)) == -1)
 			err(2, "ERROR: opening pipe for read");
 		
-		close(0);
 		dup2(fd, 0);
 		close(fd);
 	
