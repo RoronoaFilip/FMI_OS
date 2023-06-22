@@ -95,7 +95,7 @@ int main(int argc, char** argv) {
 	struct Header newH = { 0, 0, 0, 0 };
 
 	int bytes = 0;
-	while((bytes = read(fd1, &p, 4*elSize[4])) > 0) {
+	while((bytes = read(fd1, &p, elSize[4])) > 0) {
 		for(int i = 0; i < 4; ++i) {
 			myLseek(fds[i], p[i].offset, elSize[i]);
 
