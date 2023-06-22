@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
 	uint32_t buf = 0;
 	int readBytes = 0;
 	while((readBytes = read(fd1, &p, sizeof(p))) > 0) {
-		if(lseek(fd2, p.a * 4, SEEK_SET) == -1)
+		if(lseek(fd2, p.a * sizeof(uint32_t), SEEK_SET) == -1)
 			err(3, "ERROR: lseek in file: %s", argv[2]);
 		for(uint32_t i = 0; i < p.b; ++ i) {
 			if(read(fd2, &buf, sizeof(buf)) == -1)	
