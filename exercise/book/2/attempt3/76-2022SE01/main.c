@@ -28,7 +28,7 @@ struct CompData d;
 
 void myLseek(int fd, uint32_t pos);
 void myLseek(int fd, uint32_t pos) {
-	if(lseek(fd, pos*8, SEEK_SET) == -1)
+	if(lseek(fd, 8 + (pos*8), SEEK_SET) == -1)
 		err(2, "ERROR: running lseek. Invalid position");
 }
 
@@ -135,6 +135,11 @@ int main(int argc, char** argv) {
 
 	uint64_t n1, n2;
 	while(readData(fd2) > 0) {
+		if(d.offset1 > dh.count)
+			errx(21, "ERROR: offset %d does not exist int file1");
+		if(d.offset2 > dh.count)
+			errx(22, "ERROR: offset %d does not exist int file1");
+
 		myLseek(fd1, d.offset1);
 		myRead(fd1, &n1, sizeof(n1));
 		
