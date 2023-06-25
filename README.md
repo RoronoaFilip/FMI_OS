@@ -1,3 +1,5 @@
 # FMI_OS
 
-### A Repo that is a connection with astero
+## Репо с решение на задачите от сборника по ОС
+### Всички номера на задачи са спрямо тази версия на [сборника](https://github.com/RoronoaFilip/FMI_OS/blob/main/os-problems.pdf)
+* В по-нови версии има размествания на номерата, тъй като са добавяни нови задачи
